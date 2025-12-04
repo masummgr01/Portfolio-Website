@@ -230,9 +230,6 @@ async function loadGitHubProjects() {
             githubProjectsGrid.appendChild(projectCard);
         });
         
-        // Update stats
-        updateGitHubStats(repos);
-        
     } catch (error) {
         console.error('Error loading GitHub projects:', error);
         githubProjectsGrid.innerHTML = '<div class="loading-spinner"><p>Error loading projects. Please try again later.</p></div>';
@@ -300,50 +297,4 @@ function getLanguageColor(language) {
     return colors[language] || colors['Default'];
 }
 
-// Update GitHub Stats
-function updateGitHubStats(repos) {
-    const totalRepos = repos.filter(repo => !repo.fork && repo.name.toLowerCase() !== 'portfolio-website').length;
-    const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
-    const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
-    
-    const reposElement = document.getElementById('total-repos');
-    const starsElement = document.getElementById('total-stars');
-    const forksElement = document.getElementById('total-forks');
-    
-    if (reposElement) {
-        animateNumber(reposElement, totalRepos);
-    }
-    if (starsElement) {
-        animateNumber(starsElement, totalStars);
-    }
-    if (forksElement) {
-        animateNumber(forksElement, totalForks);
-    }
-}
-
-// Animate Number Counter
-function animateNumber(element, target) {
-    const duration = 2000;
-    const steps = 60;
-    const increment = target / steps;
-    let current = 0;
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            element.textContent = target;
-            clearInterval(timer);
-        } else {
-            element.textContent = Math.floor(current);
-        }
-    }, duration / steps);
-}
-
-// Load GitHub projects when page loads
-window.addEventListener('load', () => {
-    // Load stats immediately
-    fetch('https://api.github.com/users/masummgr01/repos?per_page=100')
-        .then(response => response.json())
-        .then(repos => updateGitHubStats(repos))
-        .catch(error => console.error('Error loading GitHub stats:', error));
-});
 
