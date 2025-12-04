@@ -4,82 +4,184 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Portfolio website of Masum Budha Magar - Junior Developer showcasing projects and contact information">
-    <title>Masum-Portfolio-Website</title>
+    <title>Masum - Portfolio Website</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
-<link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav id="nav-bar">
-            <ul class="nav-links">
-                <li><a href="#welcome-section" class="nav-link">Welcome</a></li>
-                <li><a href="#projects" class="nav-link">Projects</a></li>
-                <li><a href="#contact" class="nav-link">Contacts</a></li>
-            </ul>
+            <div class="nav-container">
+                <div class="logo">Masum</div>
+                <ul class="nav-links">
+                    <li><a href="#welcome-section" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <button class="menu-toggle" aria-label="Toggle menu">
+                    <i class="ri-menu-line"></i>
+                </button>
+            </div>
         </nav>
     </header>
     <section id="welcome-section">
-        <h1>Hello, I am Masum.</h1>
-        <p>A Junior Developer</p>
+        <div class="welcome-content">
+            <div class="greeting">Hello, I'm</div>
+            <h1 class="name-title">Masum Budha Magar</h1>
+            <p class="typing-text">I'm a <span class="typing" id="typing-text"></span></p>
+            <p class="intro-text">Passionate about creating beautiful and functional web experiences</p>
+            <div class="welcome-buttons">
+                <a href="#projects" class="btn btn-primary">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="ri-arrow-down-line"></i>
+        </div>
+    </section>
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm a passionate Junior Developer with a love for creating innovative web solutions. I enjoy turning complex problems into simple, beautiful, and intuitive designs.</p>
+                    <p>When I'm not coding, you can find me exploring new technologies, working on personal projects, or contributing to open-source communities.</p>
+                </div>
+                <div class="skills">
+                    <h3>Skills & Technologies</h3>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <i class="ri-code-s-slash-line"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="ri-html5-line"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="ri-css3-line"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="ri-git-branch-line"></i>
+                            <span>Git & GitHub</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="ri-responsive-line"></i>
+                            <span>Responsive Design</span>
+                        </div>
+                        <div class="skill-item">
+                            <i class="ri-palette-line"></i>
+                            <span>UI/UX Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <section id="projects">
-        <h1>These are some of my projects</h1>
-        <div class="projects">
-       
-        <a href="https://github.com/bicky9999/javascript-projects/tree/main/to-do-list" class="project-tile">
-            <img src="./img/todolist.png" alt="ToDoList project screenshot">
-            <p><span>&lt;</span>ToDoList<span>/&gt;</span></p>
-        </a>
-        <a href="https://github.com/bicky9999/javascript-projects/tree/main/snake_game" class="project-tile">
-            <img src="./img/snakegame.png" alt="Snake Game project screenshot">
-            <p><span>&lt;</span>SnakeGame<span>/&gt;</span></p>
-        </a>
-        <a href="https://github.com/bicky9999/javascript-projects/tree/main/calculator" class="project-tile">
-            <img src="./img/calculator.png" alt="Calculator project screenshot">
-            <p><span>&lt;</span>Calculator<span>/&gt;</span></p>
-        </a>
-        <a href="https://github.com/bicky9999/javascript-projects/tree/main/TicTacToe" class="project-tile">
-            <img src="./img/tictactoe.png" alt="TicTacToe project screenshot">
-            <p><span>&lt;</span>TicTacToe<span>/&gt;</span></p>
-        </a>
-       
-        </div>
-        <a href="https://github.com/bicky9999/javascript-projects" class="show-all" target="_blank"> Show All <i class="ri-arrow-drop-right-line ri-2x"></i></a>
-        
-    </section>
-    <section id="contact">
-        <h1>Let's work together...</h1>
-        <p class="coffee-question">How do you take your coffee?</p>
-        <div class="social-medias">
-            <a href="#" class="social-media">
-                <i class="ri-facebook-box-fill ri-2x"></i>
-                <p>Facebook</p>
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <p class="section-subtitle">Here are some of my recent works</p>
+            <div class="projects-grid">
+                <a href="https://github.com/bicky9999/javascript-projects/tree/main/to-do-list" class="project-tile" target="_blank">
+                    <div class="project-image">
+                        <img src="./img/todolist.png" alt="ToDoList project screenshot">
+                        <div class="project-overlay">
+                            <i class="ri-external-link-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3><span>&lt;</span>ToDoList<span>/&gt;</span></h3>
+                        <p>Task management application</p>
+                    </div>
                 </a>
-                 <a href="https://github.com/masummgr01" class="social-media" target="_blank">
-                <i class="ri-github-fill ri-2x"></i>
-                <p>Github</p>
+                <a href="https://github.com/bicky9999/javascript-projects/tree/main/snake_game" class="project-tile" target="_blank">
+                    <div class="project-image">
+                        <img src="./img/snakegame.png" alt="Snake Game project screenshot">
+                        <div class="project-overlay">
+                            <i class="ri-external-link-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3><span>&lt;</span>SnakeGame<span>/&gt;</span></h3>
+                        <p>Classic snake game implementation</p>
+                    </div>
                 </a>
-            
-             <a href="mailto:masummagar6@gmail.com" class="social-media">    
-                <i class="ri-at-line ri-2x"></i>
-                <p>Send a mail</p>
+                <a href="https://github.com/bicky9999/javascript-projects/tree/main/calculator" class="project-tile" target="_blank">
+                    <div class="project-image">
+                        <img src="./img/calculator.png" alt="Calculator project screenshot">
+                        <div class="project-overlay">
+                            <i class="ri-external-link-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3><span>&lt;</span>Calculator<span>/&gt;</span></h3>
+                        <p>Functional calculator application</p>
+                    </div>
                 </a>
-             <a href="tel:+9779812474471" class="social-media">    
-                <i class="ri-cellphone-fill ri-2x"></i>
-                <p>Call Me (+977) 9812474471</p>
+                <a href="https://github.com/bicky9999/javascript-projects/tree/main/TicTacToe" class="project-tile" target="_blank">
+                    <div class="project-image">
+                        <img src="./img/tictactoe.png" alt="TicTacToe project screenshot">
+                        <div class="project-overlay">
+                            <i class="ri-external-link-line"></i>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3><span>&lt;</span>TicTacToe<span>/&gt;</span></h3>
+                        <p>Interactive tic-tac-toe game</p>
+                    </div>
+                </a>
+            </div>
+            <a href="https://github.com/bicky9999/javascript-projects" class="show-all" target="_blank">
+                View All Projects <i class="ri-arrow-right-line"></i>
             </a>
         </div>
     </section>
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Let's work together...</p>
+            <p class="coffee-question">How do you take your coffee?</p>
+            <div class="social-medias">
+                <a href="https://github.com/masummgr01" class="social-media" target="_blank" aria-label="GitHub">
+                    <div class="social-icon">
+                        <i class="ri-github-fill"></i>
+                    </div>
+                    <p>GitHub</p>
+                </a>
+                <a href="mailto:masummagar6@gmail.com" class="social-media" aria-label="Email">
+                    <div class="social-icon">
+                        <i class="ri-mail-line"></i>
+                    </div>
+                    <p>Email</p>
+                </a>
+                <a href="tel:+9779812474471" class="social-media" aria-label="Phone">
+                    <div class="social-icon">
+                        <i class="ri-phone-line"></i>
+                    </div>
+                    <p>Call Me</p>
+                    <span class="phone-number">(+977) 9812474471</span>
+                </a>
+                <a href="https://www.linkedin.com" class="social-media" target="_blank" aria-label="LinkedIn">
+                    <div class="social-icon">
+                        <i class="ri-linkedin-box-fill"></i>
+                    </div>
+                    <p>LinkedIn</p>
+                </a>
+            </div>
+        </div>
+    </section>
     <footer>
-        Created By Masum Budha Magar May 2025
+        <div class="footer-content">
+            <p>&copy; 2025 Masum Budha Magar. All rights reserved.</p>
+            <p class="footer-subtitle">Built with passion and dedication</p>
+        </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
