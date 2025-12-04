@@ -6,6 +6,8 @@ let isDeleting = false;
 const typingElement = document.getElementById('typing-text');
 
 function typeText() {
+    if (!typingElement) return;
+    
     const currentText = typingTexts[currentTextIndex];
     
     if (!isDeleting && currentCharIndex < currentText.length) {
@@ -38,29 +40,35 @@ const menuToggle = document.querySelector('.menu-toggle');
 const navLinks = document.querySelector('.nav-links');
 const navLinksItems = document.querySelectorAll('.nav-link');
 
-if (menuToggle) {
+if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         const icon = menuToggle.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-            icon.classList.remove('ri-menu-line');
-            icon.classList.add('ri-close-line');
-        } else {
-            icon.classList.remove('ri-close-line');
-            icon.classList.add('ri-menu-line');
+        if (icon) {
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('ri-menu-line');
+                icon.classList.add('ri-close-line');
+            } else {
+                icon.classList.remove('ri-close-line');
+                icon.classList.add('ri-menu-line');
+            }
         }
     });
 }
 
 // Close mobile menu when clicking on a link
-navLinksItems.forEach(link => {
-    link.addEventListener('click', () => {
-        navLinks.classList.remove('active');
-        const icon = menuToggle.querySelector('i');
-        icon.classList.remove('ri-close-line');
-        icon.classList.add('ri-menu-line');
+if (navLinksItems.length > 0 && menuToggle) {
+    navLinksItems.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = menuToggle.querySelector('i');
+            if (icon) {
+                icon.classList.remove('ri-close-line');
+                icon.classList.add('ri-menu-line');
+            }
+        });
     });
-});
+}
 
 // Active Navigation Link on Scroll
 const sections = document.querySelectorAll('section[id]');
