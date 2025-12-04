@@ -185,6 +185,7 @@ header {
     height: 250px;
     border-radius: 50%;
     object-fit: cover;
+    object-position: center 30%;
     border: 6px solid var(--base-100);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3),
                 inset 0 0 20px rgba(255, 255, 255, 0.1);
@@ -192,6 +193,7 @@ header {
     position: relative;
     z-index: 1;
     display: block;
+    transform: scale(1.1);
 }
 
 .profile-image-container:hover {
@@ -868,6 +870,8 @@ footer {
         width: 180px;
         height: 180px;
         border-width: 4px;
+        object-position: center 30%;
+        transform: scale(1.1);
     }
 }
 
