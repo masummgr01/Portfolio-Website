@@ -145,8 +145,6 @@ header {
     animation: fadeInUp 1s ease-out 0.3s both, pulse 3s ease-in-out infinite 2s;
     position: relative;
     display: inline-block;
-    width: 280px;
-    height: 280px;
     padding: 15px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     border-radius: 50%;
@@ -154,8 +152,6 @@ header {
                 0 0 0 10px rgba(238, 187, 195, 0.1),
                 0 0 0 20px rgba(184, 193, 236, 0.1);
     transition: var(--transition);
-    overflow: hidden;
-    box-sizing: border-box;
 }
 
 .profile-image-container::before {
@@ -185,11 +181,10 @@ header {
 }
 
 .profile-image {
-    width: 100%;
-    height: 100%;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center 30%;
     border: 6px solid var(--base-100);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3),
                 inset 0 0 20px rgba(255, 255, 255, 0.1);
@@ -197,7 +192,6 @@ header {
     position: relative;
     z-index: 1;
     display: block;
-    box-sizing: border-box;
 }
 
 .profile-image-container:hover {
@@ -847,14 +841,13 @@ footer {
 /* Profile Image Responsive */
 @media only screen and (max-width: 768px) {
     .profile-image-container {
-        width: 224px;
-        height: 224px;
         padding: 12px;
     }
     
     .profile-image {
+        width: 200px;
+        height: 200px;
         border-width: 5px;
-        object-position: center 30%;
     }
     
     .profile-image-container::before,
@@ -868,14 +861,13 @@ footer {
 
 @media only screen and (max-width: 480px) {
     .profile-image-container {
-        width: 200px;
-        height: 200px;
         padding: 10px;
     }
     
     .profile-image {
+        width: 180px;
+        height: 180px;
         border-width: 4px;
-        object-position: center 30%;
     }
 }
 
