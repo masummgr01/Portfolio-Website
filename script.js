@@ -166,3 +166,184 @@ window.addEventListener('load', () => {
     }, 100);
 });
 
+// Projects Tab Switching
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+if (tabButtons.length > 0) {
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+            
+            // Remove active class from all buttons and contents
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // Add active class to clicked button
+            button.classList.add('active');
+            
+            // Show corresponding content
+            if (targetTab === 'featured') {
+                document.getElementById('featured-projects').classList.add('active');
+            } else if (targetTab === 'github') {
+                document.getElementById('github-projects').classList.add('active');
+                // Load GitHub projects if not already loaded
+                if (!document.getElementById('github-projects-grid').hasAttribute('data-loaded')) {
+                    loadGitHubProjects();
+                }
+            }
+        });
+    });
+}
+
+// Fetch GitHub Projects
+async function loadGitHubProjects() {
+    const githubProjectsGrid = document.getElementById('github-projects-grid');
+    if (!githubProjectsGrid) return;
+    
+    try {
+        const username = 'masummgr01';
+        const response = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=100`);
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch GitHub projects');
+        }
+        
+        const repos = await response.json();
+        
+        // Filter out Portfolio-Website and forked repos, sort by updated date
+        const filteredRepos = repos
+            .filter(repo => !repo.fork && repo.name.toLowerCase() !== 'portfolio-website')
+            .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at))
+            .slice(0, 12); // Limit to 12 most recent projects
+        
+        githubProjectsGrid.innerHTML = '';
+        githubProjectsGrid.setAttribute('data-loaded', 'true');
+        
+        if (filteredRepos.length === 0) {
+            githubProjectsGrid.innerHTML = '<div class="loading-spinner"><p>No projects found</p></div>';
+            return;
+        }
+        
+        filteredRepos.forEach(repo => {
+            const projectCard = createProjectCard(repo);
+            githubProjectsGrid.appendChild(projectCard);
+        });
+        
+        // Update stats
+        updateGitHubStats(repos);
+        
+    } catch (error) {
+        console.error('Error loading GitHub projects:', error);
+        githubProjectsGrid.innerHTML = '<div class="loading-spinner"><p>Error loading projects. Please try again later.</p></div>';
+    }
+}
+
+// Create Project Card from GitHub Repo
+function createProjectCard(repo) {
+    const card = document.createElement('a');
+    card.href = repo.html_url;
+    card.target = '_blank';
+    card.className = 'project-tile';
+    
+    const language = repo.language || 'Code';
+    const languageColor = getLanguageColor(repo.language);
+    
+    card.innerHTML = `
+        <div class="project-image">
+            <div class="github-repo-placeholder" style="background: linear-gradient(135deg, ${languageColor}20, ${languageColor}40);">
+                <i class="ri-github-fill" style="font-size: 64px; color: ${languageColor};"></i>
+            </div>
+            <div class="project-overlay">
+                <i class="ri-external-link-line"></i>
+            </div>
+        </div>
+        <div class="project-info">
+            <h3><span>&lt;</span>${repo.name}<span>/&gt;</span></h3>
+            <p>${repo.description || 'No description available'}</p>
+            <div class="repo-stats">
+                <span class="repo-stat"><i class="ri-star-line"></i> ${repo.stargazers_count}</span>
+                <span class="repo-stat"><i class="ri-git-branch-line"></i> ${repo.forks_count}</span>
+                <span class="repo-stat" style="color: ${languageColor}"><i class="ri-circle-fill"></i> ${language}</span>
+            </div>
+        </div>
+    `;
+    
+    return card;
+}
+
+// Get Language Color
+function getLanguageColor(language) {
+    const colors = {
+        'JavaScript': '#f7df1e',
+        'TypeScript': '#3178c6',
+        'Python': '#3776ab',
+        'Java': '#ed8b00',
+        'HTML': '#e34c26',
+        'CSS': '#1572b6',
+        'PHP': '#777bb4',
+        'Ruby': '#cc342d',
+        'Go': '#00add8',
+        'Rust': '#000000',
+        'C++': '#00599c',
+        'C': '#a8b9cc',
+        'C#': '#239120',
+        'Swift': '#fa7343',
+        'Kotlin': '#7f52ff',
+        'Dart': '#0175c2',
+        'Vue': '#4fc08d',
+        'React': '#61dafb',
+        'Angular': '#dd0031',
+        'Node.js': '#339933',
+        'Default': '#eebbc3'
+    };
+    return colors[language] || colors['Default'];
+}
+
+// Update GitHub Stats
+function updateGitHubStats(repos) {
+    const totalRepos = repos.filter(repo => !repo.fork && repo.name.toLowerCase() !== 'portfolio-website').length;
+    const totalStars = repos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
+    const totalForks = repos.reduce((sum, repo) => sum + repo.forks_count, 0);
+    
+    const reposElement = document.getElementById('total-repos');
+    const starsElement = document.getElementById('total-stars');
+    const forksElement = document.getElementById('total-forks');
+    
+    if (reposElement) {
+        animateNumber(reposElement, totalRepos);
+    }
+    if (starsElement) {
+        animateNumber(starsElement, totalStars);
+    }
+    if (forksElement) {
+        animateNumber(forksElement, totalForks);
+    }
+}
+
+// Animate Number Counter
+function animateNumber(element, target) {
+    const duration = 2000;
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, duration / steps);
+}
+
+// Load GitHub projects when page loads
+window.addEventListener('load', () => {
+    // Load stats immediately
+    fetch('https://api.github.com/users/masummgr01/repos?per_page=100')
+        .then(response => response.json())
+        .then(repos => updateGitHubStats(repos))
+        .catch(error => console.error('Error loading GitHub stats:', error));
+});
+

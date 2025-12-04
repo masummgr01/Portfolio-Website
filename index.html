@@ -30,6 +30,9 @@
     </header>
     <section id="welcome-section">
         <div class="welcome-content">
+            <div class="profile-image-container">
+                <img src="./img/profile.jpg" alt="Masum Budha Magar" class="profile-image">
+            </div>
             <div class="greeting">Hello, I'm</div>
             <h1 class="name-title">Masum Budha Magar</h1>
             <p class="typing-text">I'm a <span class="typing" id="typing-text"></span></p>
@@ -81,65 +84,102 @@
                     </div>
                 </div>
             </div>
+            <div class="github-stats">
+                <h3>GitHub Contributions</h3>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number" id="total-repos">-</div>
+                        <div class="stat-label">Repositories</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="total-stars">-</div>
+                        <div class="stat-label">Stars</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number" id="total-forks">-</div>
+                        <div class="stat-label">Forks</div>
+                    </div>
+                </div>
+                <div class="github-contributions">
+                    <img id="contributions-chart" src="https://github-readme-activity-graph.vercel.app/graph?username=masummgr01&theme=github-compact&hide_border=true" alt="GitHub Contributions Graph" />
+                </div>
+            </div>
         </div>
     </section>
     <section id="projects">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
             <p class="section-subtitle">Here are some of my recent works</p>
-            <div class="projects-grid">
-                <a href="https://github.com/bicky9999/javascript-projects/tree/main/to-do-list" class="project-tile" target="_blank">
-                    <div class="project-image">
-                        <img src="./img/todolist.png" alt="ToDoList project screenshot">
-                        <div class="project-overlay">
-                            <i class="ri-external-link-line"></i>
+            
+            <div class="projects-tabs">
+                <button class="tab-btn active" data-tab="featured">Featured Projects</button>
+                <button class="tab-btn" data-tab="github">GitHub Projects</button>
+            </div>
+
+            <div class="tab-content active" id="featured-projects">
+                <div class="projects-grid">
+                    <a href="https://github.com/bicky9999/javascript-projects/tree/main/to-do-list" class="project-tile" target="_blank">
+                        <div class="project-image">
+                            <img src="./img/todolist.png" alt="ToDoList project screenshot">
+                            <div class="project-overlay">
+                                <i class="ri-external-link-line"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-info">
-                        <h3><span>&lt;</span>ToDoList<span>/&gt;</span></h3>
-                        <p>Task management application</p>
-                    </div>
-                </a>
-                <a href="https://github.com/bicky9999/javascript-projects/tree/main/snake_game" class="project-tile" target="_blank">
-                    <div class="project-image">
-                        <img src="./img/snakegame.png" alt="Snake Game project screenshot">
-                        <div class="project-overlay">
-                            <i class="ri-external-link-line"></i>
+                        <div class="project-info">
+                            <h3><span>&lt;</span>ToDoList<span>/&gt;</span></h3>
+                            <p>Task management application</p>
                         </div>
-                    </div>
-                    <div class="project-info">
-                        <h3><span>&lt;</span>SnakeGame<span>/&gt;</span></h3>
-                        <p>Classic snake game implementation</p>
-                    </div>
-                </a>
-                <a href="https://github.com/bicky9999/javascript-projects/tree/main/calculator" class="project-tile" target="_blank">
-                    <div class="project-image">
-                        <img src="./img/calculator.png" alt="Calculator project screenshot">
-                        <div class="project-overlay">
-                            <i class="ri-external-link-line"></i>
+                    </a>
+                    <a href="https://github.com/bicky9999/javascript-projects/tree/main/snake_game" class="project-tile" target="_blank">
+                        <div class="project-image">
+                            <img src="./img/snakegame.png" alt="Snake Game project screenshot">
+                            <div class="project-overlay">
+                                <i class="ri-external-link-line"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div class="project-info">
-                        <h3><span>&lt;</span>Calculator<span>/&gt;</span></h3>
-                        <p>Functional calculator application</p>
-                    </div>
-                </a>
-                <a href="https://github.com/bicky9999/javascript-projects/tree/main/TicTacToe" class="project-tile" target="_blank">
-                    <div class="project-image">
-                        <img src="./img/tictactoe.png" alt="TicTacToe project screenshot">
-                        <div class="project-overlay">
-                            <i class="ri-external-link-line"></i>
+                        <div class="project-info">
+                            <h3><span>&lt;</span>SnakeGame<span>/&gt;</span></h3>
+                            <p>Classic snake game implementation</p>
                         </div>
-                    </div>
-                    <div class="project-info">
-                        <h3><span>&lt;</span>TicTacToe<span>/&gt;</span></h3>
-                        <p>Interactive tic-tac-toe game</p>
-                    </div>
+                    </a>
+                    <a href="https://github.com/bicky9999/javascript-projects/tree/main/calculator" class="project-tile" target="_blank">
+                        <div class="project-image">
+                            <img src="./img/calculator.png" alt="Calculator project screenshot">
+                            <div class="project-overlay">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3><span>&lt;</span>Calculator<span>/&gt;</span></h3>
+                            <p>Functional calculator application</p>
+                        </div>
+                    </a>
+                    <a href="https://github.com/bicky9999/javascript-projects/tree/main/TicTacToe" class="project-tile" target="_blank">
+                        <div class="project-image">
+                            <img src="./img/tictactoe.png" alt="TicTacToe project screenshot">
+                            <div class="project-overlay">
+                                <i class="ri-external-link-line"></i>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <h3><span>&lt;</span>TicTacToe<span>/&gt;</span></h3>
+                            <p>Interactive tic-tac-toe game</p>
+                        </div>
+                    </a>
+                </div>
+                <a href="https://github.com/bicky9999/javascript-projects" class="show-all" target="_blank">
+                    View All Projects <i class="ri-arrow-right-line"></i>
                 </a>
             </div>
-            <a href="https://github.com/bicky9999/javascript-projects" class="show-all" target="_blank">
-                View All Projects <i class="ri-arrow-right-line"></i>
-            </a>
+
+            <div class="tab-content" id="github-projects">
+                <div class="projects-grid" id="github-projects-grid">
+                    <div class="loading-spinner">
+                        <i class="ri-loader-4-line"></i>
+                        <p>Loading GitHub projects...</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <section id="contact">
